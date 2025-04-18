@@ -21,7 +21,7 @@ int DLL_EXPORT isbn_check_digit(BOOL beep, int len, int m, char *buf, uchar b)
   return 1;
 }
 
-uchar DLL_EXPORT isbn_mod_digit(uchar b, uchar n)
+uchar DLL_EXPORT isbn_mod_digit(ushort b, uchar n)
 {
   return (n - (b % n)) % n;
 }
@@ -43,7 +43,7 @@ char DLL_EXPORT isbn10(char *buf)
 {
   char b[10];
   int len = isbn_collect(sizeof(b), b, buf);
-  uchar s = 0;
+  ushort s = 0;
   for(int i = 0; i < 9; ++i){
     s += b[i] * (10 - i);
   }
